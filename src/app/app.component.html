@@ -1,34 +1,51 @@
 <div>
-  <form [formGroup]="paymentForm">
+  <form [formGroup]="paymentForm" (ngSubmit)="submitForm()">
 
-    <div class="form-group">
+    <div class="form-group" [ngClass]="displayFieldCss('cardHolderName')">
       <label>Name on Card</label>
-      <input class="form-control" type="text" placeholder="John Krane">
-      <div class="alert alert-danger">Invalid Cardholder Name.</div>
+      <!--<input class="form-control" type="text" placeholder="John Krane">-->
+      <!--<input [(ngModel)]="payment.cardHolderName" placeholder="Shantonav Sen"/>-->
+      <input class="form-control" formControlName="cardHolderName" placeholder="Shantonav Sen"/>
+      <app-field-error-display [displayError]="isFieldValid('cardHolderName')" errorMsg="Please enter valid card holder name">
+      </app-field-error-display>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [ngClass]="displayFieldCss('cardNumber')">
       <label>Card Number</label>
-      <input class="form-control" type="text" placeholder="1234123412341234">
-      <div class="alert alert-danger">Invalid Card Number.</div>
+      <!--<input class="form-control" type="text" placeholder="1234123412341234">-->
+      <!--<input [(ngModel)]="payment.cardNumber" placeholder="1111111111111111"/>-->
+      <input class="form-control" formControlName="cardNumber" placeholder="1111111111111111"/>
+      <app-field-error-display [displayError]="isFieldValid('cardNumber')" errorMsg="Please enter valid card number">
+      </app-field-error-display>
     </div>
 
-    <div class="form-group expiry">
+    <div class="form-group expiry" [ngClass]="displayFieldCss('expiryMonth') &&  displayFieldCss('expiryYear')">
       <label>Date of Expiration</label>
-      <input class="form-control month" type="text" placeholder="07">
-      <input class="form-control year" type="text" placeholder="2017">
-      <div class="alert alert-danger">Invalid Date of Expiration.</div>
+      <!--<input class="form-control month" type="text" placeholder="07">-->
+      <!--<input class="form-control month" [(ngModel)]="payment.expiryMonth" placeholder="07" />-->
+      <input class="form-control month" formControlName="expiryMonth" placeholder="08"/>
+      <app-field-error-display [displayError]="isFieldValid('expiryMonth')" errorMsg="Please enter valid expiry month">
+      </app-field-error-display>
+      <!--<input class="form-control year" type="text" placeholder="2017">-->
+      <!--<input [(ngModel)]="payment.expiryYear" placeholder="2021" class="form-control year"/>-->
+      <input class="form-control year" formControlName="expiryYear" placeholder="2021"/>
+      <app-field-error-display [displayError]="isFieldValid('expiryYear')" errorMsg="Please enter valid expiry year">
+      </app-field-error-display>
+      <!--<div class="alert alert-danger">Invalid Date of Expiration.</div>-->
     </div>
 
-    <div class="form-group cvc">
+    <div class="form-group cvc" [ngClass]="displayFieldCss('cvv')">
       <label>CVV/CVC</label>
-      <input class="form-control" type="text" placeholder="123">
-      <div class="alert alert-danger">Invalid CVV / CVC Number.</div>
+      <!--<input class="form-control" type="text" placeholder="123">-->
+      <!--<input [(ngModel)]="payment.cvv" placeholder="234"/>-->
+      <input class="form-control" formControlName="cvv" placeholder="444"/>
+      <app-field-error-display [displayError]="isFieldValid('cvv')" errorMsg="Please enter valid CVV">
+      </app-field-error-display>
     </div>
 
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <h3 class="center-block text-center"><!-- Display the message here --></h3>
+    <h3 class="center-block text-center"><!-- Display the message here --> {{ paymentForm.get('formMsg').value }}</h3>
   </form>
 </div>

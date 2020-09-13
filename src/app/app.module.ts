@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Route } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
 
 @NgModule({
   /* set respective calls to components, services, etc here */
@@ -13,12 +13,11 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     // other imports ...
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: AppComponent },
-    ])
+    FormsModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    FieldErrorDisplayComponent
   ],
   bootstrap: [ AppComponent ]
 })
