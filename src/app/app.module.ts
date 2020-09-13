@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   /* set respective calls to components, services, etc here */
@@ -13,7 +14,8 @@ import { FieldErrorDisplayComponent } from './field-error-display/field-error-di
     // other imports ...
     BrowserModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   declarations: [
     AppComponent,
